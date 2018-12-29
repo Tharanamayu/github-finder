@@ -32,5 +32,14 @@ showProfile(user){
    <div id="repos"></div>
   `;
   
+
+}
+//show alert message
+showAlert(){
+
+}
+//clear profile
+clearProfile(){
+  this.profile.innerHTML='';
 }
 }
