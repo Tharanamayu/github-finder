@@ -3,6 +3,8 @@ class UI{
   constructor(){
     this.profile =document.getElementById('profile');
   }
+
+  //Display profile in ui
 showProfile(user){
   this.profile.innerHTML =`
    <div class="card card-body mb-3">
@@ -35,8 +37,19 @@ showProfile(user){
 
 }
 //show alert message
-showAlert(){
-
+showAlert(message,className){
+//create div
+const div=document.createElement('div');
+//Add classes
+div.className=className;
+//add text
+div.appendChild(document.createTextNode(message ));
+//Get parent
+const container = document.querySelector('.searchContainer');
+//Gets search box
+const search=document.querySelector('.search');
+//Insert Alert
+container.insertBefore(div,search);
 }
 //clear profile
 clearProfile(){
