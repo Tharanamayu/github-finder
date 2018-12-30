@@ -1,12 +1,12 @@
-class UI{
+class UI {
 
-  constructor(){
-    this.profile =document.getElementById('profile');
+  constructor() {
+    this.profile = document.getElementById('profile');
   }
 
   //Display profile in ui
-showProfile(user){
-  this.profile.innerHTML =`
+  showProfile(user) {
+    this.profile.innerHTML = `
    <div class="card card-body mb-3">
     <div class"row">
     <div class="col-md-3">
@@ -33,41 +33,63 @@ showProfile(user){
    <h3 class="page-heading mb-3">Latest repos</h3>
    <div id="repos"></div>
   `;
-  
 
-}
-//show alert message
-showAlert(message,className){
-//clear any remaining alerts  
-this.clearAlert();
-//create div
-const div=document.createElement('div');
-//Add classes
-div.className=className;
-//add text
-div.appendChild(document.createTextNode(message ));
-//Get parent
-const container = document.querySelector('.searchContainer');
-//Gets search box
-const search=document.querySelector('.search');
-//Insert Alert
-container.insertBefore(div,search);
-//timeout after 3 sec
-setTimeout(()=>{
-  this.clearAlert();
-},3000);
-}
-//clear alert message
-clearAlert(){
-const currentAlert=document.querySelector('.alert');
 
-if(currentAlert){
-   currentAlert.remove();
+  }
 
+//show user repos
+
+showRepos(repos){
+  let output='';
+  repos.forEach(function(repo){
+    output +=`<div class="card card-body mb-2>"
+    <div class="row">
+    <div class="col-md-6">
+      <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+    </div>
+    <div class="col-md-6">
+    <span class="badge badge-primary">Stars Repos: ${user.public_repos}</span>
+    <span class="badge badge-secondary">Public Gists: ${user.public_gists}</span>
+    <span class="badge badge-success">Followers: ${user.followers}</span>
+    </div>
+    </div>
+    </div>`;
+  });
 }
-}
-//clear profile
-clearProfile(){
-  this.profile.innerHTML='';
-}
+
+
+  //show alert message
+  showAlert(message, className) {
+    //clear any remaining alerts  
+    this.clearAlert();
+    //create div
+    const div = document.createElement('div');
+    //Add classes
+    div.className = className;
+    //add text
+    div.appendChild(document.createTextNode(message));
+    //Get parent
+    const container = document.querySelector('.searchContainer');
+    //Gets search box
+    const search = document.querySelector('.search');
+    //Insert Alert
+    container.insertBefore(div, search);
+    //timeout after 3 sec
+    setTimeout(() => {
+      this.clearAlert();
+    }, 3000);
+  }
+  //clear alert message
+  clearAlert() {
+    const currentAlert = document.querySelector('.alert');
+
+    if (currentAlert) {
+      currentAlert.remove();
+
+    }
+  }
+  //clear profile
+  clearProfile() {
+    this.profile.innerHTML = '';
+  }
 }
