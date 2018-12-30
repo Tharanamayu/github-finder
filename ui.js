@@ -38,6 +38,8 @@ showProfile(user){
 }
 //show alert message
 showAlert(message,className){
+//clear any remaining alerts  
+this.clearAlert();
 //create div
 const div=document.createElement('div');
 //Add classes
@@ -50,6 +52,19 @@ const container = document.querySelector('.searchContainer');
 const search=document.querySelector('.search');
 //Insert Alert
 container.insertBefore(div,search);
+//timeout after 3 sec
+setTimeout(()=>{
+  this.clearAlert();
+},3000);
+}
+//clear alert message
+clearAlert(){
+const currentAlert=document.querySelector('.alert');
+
+if(currentAlert){
+   currentAlert.remove();
+
+}
 }
 //clear profile
 clearProfile(){
